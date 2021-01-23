@@ -35,9 +35,11 @@
     <p>Фамилия: {{ friend.last_name }}</p>
 
         {% if request.user.is_authenticated %}
-        <a href="{% url 'webapp:delete_friends' friend.pk%}"><button type="button" class="btn badge badge-dark">
+        <a class="badge badge-secondary" href="{% url 'webapp:delete_friends' friend.pk%}"><button type="button" class="btn badge badge-dark">
             Удалить в друга</button></a>
+             <a class="badge badge-secondary" href="{% url 'webapp:send_mesenge' friend.user.pk %}">Написать</a>
                     {% endif %}
+
 
 </div>
 {% endfor %}
