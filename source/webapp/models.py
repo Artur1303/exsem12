@@ -5,7 +5,6 @@ from django.db import models
 class Message(models.Model):
         from_whom = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='from_whom',
                                   verbose_name='Сообщение')
-
         to_whom = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='whom_messages',
                                  verbose_name='Сообщение')
         text_message = models.TextField(max_length=1000, blank=True, null=True, verbose_name='Текст сообщения')

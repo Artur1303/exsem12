@@ -37,8 +37,6 @@ class DeleteFriends(View):
         return HttpResponse({"message": "Удален"})
 
 
-
-
 class MessengeCreateView(CreateView):
         pass
 
