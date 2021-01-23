@@ -2,7 +2,7 @@
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse, HttpResponse
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from rest_framework.generics import get_object_or_404
 from accounts.models import Profile
 
@@ -38,6 +38,9 @@ class DeleteFriends(View):
 
 
 
+
+class MessengeCreateView(CreateView):
+        pass
 
 
 
