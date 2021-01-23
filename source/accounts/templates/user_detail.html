@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %}Пользователь{% endblock %}
 
 {% block menu %}
@@ -21,7 +21,29 @@
     <p>Фамилия: {{ user_obj.last_name }}</p>
     <p>Дата рождения: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
     <p>Почта: {{ user_obj.email }}</p>
+     <h1>Друзья пользователя</h1>
+                     {% for friend in friends %}
+    <div class="box">
+    <h1>Личная страница пользователя {{ friend.get_full_name|default:friend.user.username }}</h1>
+    {% if friend.avatar %}
+        <img class="av" src="{{ friend.avatar.url }}" width="150" height="150" alt="user picture">
+        {% else %}
+        <img class="av" src="https://spirk.ru/files/53c/53c3765a1e324e53aed3ca6108f83c12.gif" width="150" height="150" alt="user picture">
+    {% endif %}
+    <p>Имя пользователя: <a class="badge badge-secondary"  href="{% url 'accounts:detail' friend.pk %}">{{ friend.user.username  }}</a></p>
+    <p>Имя: {{ friend.first_name }}</p>
+    <p>Фамилия: {{ friend.last_name }}</p>
 
-{#    <h2 class="text-center clear">Статьи автора:</h2>#}
-{#    {% include 'partial/article_list.html' %}#}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'webapp:delete_friends' friend.pk%}"><button type="button" class="btn badge badge-dark">
+            Удалить в друга</button></a>
+                    {% endif %}
+
+</div>
+{% endfor %}
+
+
+
+
+    <script type="application/javascript" src="{% static "js/delete_friend.js" %}"></script>
 {% endblock %}

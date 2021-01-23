@@ -46,6 +46,7 @@ class Profile(models.Model):
                                               on_delete=models.CASCADE, verbose_name='Пользователь')
     birth_date = models.DateField(null=True, blank=True, verbose_name='Дата рождения')
     avatar = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name='Аватар')
+    friends = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
         return self.user.get_full_name() + "'s Profile"
@@ -53,3 +54,4 @@ class Profile(models.Model):
     class Meta:
         verbose_name = 'Профиль'
         verbose_name_plural = 'Профили'
+

@@ -63,7 +63,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     paginate_related_orphans = 0
 
     def get_context_data(self, **kwargs):
-        # articles = self.object.articles.order_by('-created_at')
+        context = super().get_context_data(**kwargs)
+        context['friends'] = self.object.profile.friends.all()
+        return context
         # paginator = Paginator(articles, self.paginate_related_by, orphans=self.paginate_related_orphans)
         # page_number = self.request.GET.get('page', 1)
         # page = paginator.get_page(page_number)
@@ -72,7 +74,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         # kwargs['is_paginated'] = page.has_other_pages()
         # if self.object == self.request.user:   # на странице пользователя показываем
         #     kwargs['show_mass_delete'] = True  # массовое удаление только владельцу
-        return super().get_context_data(**kwargs)
+        # return super().get_context_data(**kwargs)
 
 
 class UserChangeView(UserPassesTestMixin, UpdateView):

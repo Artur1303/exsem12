@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}Main page{% endblock %}
 
 {% block content %}
@@ -18,10 +19,13 @@
         {% else %}
         <img class="av" src="https://spirk.ru/files/53c/53c3765a1e324e53aed3ca6108f83c12.gif" width="150" height="150" alt="user picture">
     {% endif %}
-    <p>Имя пользователя: <a class="badge badge-secondary" href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></p>
+    <p>Имя пользователя: <a class="badge badge-secondary"  href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></p>
     <p>Имя: {{ user.first_name }}</p>
     <p>Фамилия: {{ user.last_name }}</p>
-    <button class="badge badge-secondary">Добавить в друзья</button>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'webapp:add_friend' user.profile.pk%}"><button type="button" class="btn badge badge-dark">
+            Добавить в друзья</button></a>
+                    {% endif %}
 
 </div>
 {% endfor %}
@@ -32,4 +36,5 @@
    {% else %}
 
    {% endif %}
+<script type="application/javascript" src="{% static "js/add_friends.js" %}"></script>
 {% endblock %}
