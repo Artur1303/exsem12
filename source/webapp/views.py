@@ -16,6 +16,8 @@ class IndexView(ListView):
     template_name = 'index.html'
     model = get_user_model()
     context_object_name = 'users'
+    paginate_by = 2
+    paginate_orphans = 0
 
     def get_queryset(self):
         my_user = super().get_queryset().exclude(pk=self.request.user.pk)

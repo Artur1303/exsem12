@@ -41,9 +41,9 @@
 
 </div>
 {% endfor %}
-
-
-
-
+ {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
     <script type="application/javascript" src="{% static "js/delete_friend.js" %}"></script>
+
 {% endblock %}
