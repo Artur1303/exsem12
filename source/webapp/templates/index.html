@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Main page{% endblock %}
+
+{% block content %}
+    <div class='box'>
+
+
+        {% if request.user.is_authenticated %}
+            {% if is_paginated %}
+                {% include 'partial/pagination.html' %}
+            {% endif %}
+
+                            {% for user in users %}
+    <div class="box">
+    <h1>Личная страница пользователя {{ user.get_full_name|default:user.username }}</h1>
+    {% if user.profile.avatar %}
+        <img class="av" src="{{ user.profile.avatar.url }}" width="150" height="150" alt="user picture">
+        {% else %}
+        <img class="av" src="https://spirk.ru/files/53c/53c3765a1e324e53aed3ca6108f83c12.gif" width="150" height="150" alt="user picture">
+    {% endif %}
+    <p>Имя пользователя: <a class="badge badge-secondary" href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></p>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <button class="badge badge-secondary">Добавить в друзья</button>
+
+</div>
+{% endfor %}
+            </div>
+         {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+   {% else %}
+
+   {% endif %}
+{% endblock %}

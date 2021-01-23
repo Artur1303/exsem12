@@ -15,13 +15,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     {% block links %}{% endblock %}
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <ul class="menu">
-{#                <li><a href="{% url 'webapp:index' %}">Home</a></li>#}
+                <li><a href="{% url 'webapp:index' %}">Home</a></li>
                 {% if request.user.is_authenticated %}
 {#                    <li><a href="{% url 'webapp:article_create' %}">Add Article</a></li>#}
                     {% block menu %}{% endblock %}
@@ -53,18 +55,6 @@
                     </form>
                 </div>
 
-{#                <div class="lang-links">#}
-{#                    {% get_current_language as LANGUAGE_CODE %}#}
-{#                    {% get_available_languages as LANGUAGES %}#}
-{#                    {% get_language_info_list for LANGUAGES as languages %}#}
-{#                    {% get_language_info for LANGUAGE_CODE as current_language %}#}
-{#                    {% for language in languages %}#}
-{#                        <a class="lang-link {% if language.code == LANGUAGE_CODE %}active{% endif %}"#}
-{#                           href="{% if language.code != default_language %}/{{ language.code }}{% endif %}{{ language_base_link }}">#}
-{#                            {{ language.name_local }} ({{ language.code }})#}
-{#                        </a>#}
-{#                    {% endfor %}#}
-{#                </div>#}
             {% endblock %}
         </div>
     </nav>

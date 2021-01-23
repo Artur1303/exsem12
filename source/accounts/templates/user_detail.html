@@ -13,6 +13,8 @@
     <h1>Личная страница пользователя {{ user_obj.get_full_name|default:user_obj.username }}</h1>
     {% if user_obj.profile.avatar %}
         <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
+        {% else %}
+                <img src="https://spirk.ru/files/53c/53c3765a1e324e53aed3ca6108f83c12.gif" width="150" height="150" alt="user picture">
     {% endif %}
     <p>Имя пользователя: {{ user_obj.username }}</p>
     <p>Имя: {{ user_obj.first_name }}</p>

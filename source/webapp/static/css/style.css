@@ -158,10 +158,10 @@ input[type='submit']:hover {
 .avatar {
     display: inline-block;
     float: left;
-    width: 250px;
+    width: 150px;
     height: auto;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
 }
 
 .text-center {
@@ -195,4 +195,8 @@ input[type='submit']:hover {
 .lang-link:hover {
     color: #ffc122;
     text-decoration: underline;
+}
+
+.av{
+    margin-bottom: 20px;
 }
