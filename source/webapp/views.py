@@ -1,14 +1,9 @@
-import json
-from django.contrib import messages
+
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView
 from rest_framework.generics import get_object_or_404
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
 from accounts.models import Profile
 
 
